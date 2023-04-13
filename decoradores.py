@@ -1,0 +1,26 @@
+# Decoradores
+# Un decorador es una funcion que recibe una funcion y regresa otra
+# Lo utilizamos para extender funcionalidad
+# 1. Funcion decorador (a)
+# 2. Funcion a decorar (b)
+# 3. Funcion decorada (c)
+
+def funcion_decorador_a(funcion_a_decorar_b):
+    def funcion_decorada_c(*args, **kwargs):
+        print('Antes de ejecutar la funcion')
+        resultado = funcion_a_decorar_b(*args, **kwargs)
+        print('Despues de ejecutar la funcion')
+        return resultado
+    return funcion_decorada_c
+
+#@funcion_decorador_a
+#def mostrar_mensaje():
+    #print('Hola desde funcion mostrar mensaje')
+#mostrar_mensaje() # no ejecuta la funcion directamente y ejecuta el decorador de forma indirecta
+
+@funcion_decorador_a
+def sumar(a, b):
+    return a + b
+
+resultado = sumar(5,6)
+print(f'Resultado de la suma: {resultado}')
